@@ -3,12 +3,9 @@ class WageCalculation
 	//CONSTANTS
 	static final int IS_PRESENT = 1;
 	static final int IS_FULL_TIME = 1;
-	static final int WAGE_PER_HR = 20;
-	static final int WORKING_DAYS_PER_MONTH = 20;
-	static final int MAX_WORKING_HRS = 100;
 
 	//WAGE CALCULATOR
-	public static void wageCalculator()
+	public static void wageCalculator(String company, int wage_per_hr, int working_days_per_month, int max_working_hrs)
 	{
 		//VARIABLES
 		int checkPresence;
@@ -20,7 +17,7 @@ class WageCalculation
 		int totalWorkedHrs = 0;
 
 		//Wage calculation
-		while (dayOfMonth <= WORKING_DAYS_PER_MONTH && totalWorkedHrs <= MAX_WORKING_HRS)
+		while (dayOfMonth <= working_days_per_month && totalWorkedHrs <= max_working_hrs)
 		{
 			checkPresence = (int) (Math.random()*10)%2; //Presence check
 			checkEmpType = (int) (Math.random()*10)%2;  //Work Type check
@@ -43,12 +40,12 @@ class WageCalculation
 					totalWorkedHrs += 0;
 			}
 			/*//can show the daily wage
-			 * empDailyWage = WAGE_PER_HR * workingHrs;
+			 * empDailyWage = wage_per_hr * workingHrs;
 			 * System.out.println("Daily wage of employee: "+empDailyWage);
 			 */
-			totalWage = (WAGE_PER_HR * totalWorkedHrs); 
+			totalWage = (wage_per_hr * totalWorkedHrs);
 			/* //can show wage until the current day
-			 * if(dayOfMonth <= WORKING_DAYS_PER_MONTH)
+			 * if(dayOfMonth <= working_days_per_month)
 			 * System.out.println("till the day "+dayOfMonth+" : "+totalWage);
 			 */
 		}
@@ -61,7 +58,11 @@ public class EmployeeWageComputationProgram
 {
 	public static void main(String[] args)
 	{
-		//calling wageCalculator with Class name (static method)
-		WageCalculation.wageCalculator();
+		//calling static method for different companies
+		WageCalculation.wageCalculator ("company1", 20, 20, 100);
+		WageCalculation.wageCalculator ("company2", 10, 30, 110);
+		WageCalculation.wageCalculator ("company3", 15, 10, 120);
+		WageCalculation.wageCalculator ("company4", 30, 25, 130);
+		WageCalculation.wageCalculator ("company5", 50, 15, 140);
 	}
 }
