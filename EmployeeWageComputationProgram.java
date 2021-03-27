@@ -8,7 +8,7 @@ class WageCalculation
 	final int MAX_WORKING_HRS = 100;
 
 	//WAGE CALCULATOR
-	public WageCalculation()
+	public void wageCalculator()
 	{
 		//VARIABLES
 		int checkPresence;
@@ -63,5 +63,6 @@ public class EmployeeWageComputationProgram
 	{
 		//object creation and invoking the WAGE CALCULATOR constructor
 		WageCalculation wc = new WageCalculation();
+		wc.wageCalculator();
 	}
 }
