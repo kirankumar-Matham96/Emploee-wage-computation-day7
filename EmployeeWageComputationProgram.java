@@ -13,23 +13,22 @@ public class EmployeeWageComputationProgram
 		int checkEmpType;
 		int empWage = 0;
 
-		//CHECKING EMPLOYEE PRESENCE
 		checkPresence = (int) (Math.random()*10)%2;
 		checkEmpType = (int) (Math.random()*10)%2;
-		if(checkPresence == IS_PRESENT)
+		switch(checkPresence)
 		{
-			if(checkEmpType == IS_FULL_TIME)
-			{
-				empWage = WAGE_PER_HR * FULL_TIME_WORKING_HRS;
-			}
-			else
-			{
-				empWage = WAGE_PER_HR * PART_TIME_WORKING_HRS;
-			}
-		}
-		else
-		{
-			System.out.println("Absent!");
+			case IS_PRESENT:
+				switch(checkEmpType)
+				{
+					case IS_FULL_TIME:
+						empWage = WAGE_PER_HR * FULL_TIME_WORKING_HRS;
+						break;
+					default:
+						empWage = WAGE_PER_HR * PART_TIME_WORKING_HRS;
+				}
+				break;
+			default:
+				System.out.println("Employee is absen!");
 		}
 		System.out.println("Employee Wage: "+empWage);
 	}
