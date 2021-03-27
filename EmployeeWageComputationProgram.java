@@ -4,6 +4,16 @@ class WageCalculation
 	static final int IS_PRESENT = 1;
 	static final int IS_FULL_TIME = 1;
 
+	//method to store company details
+	public static void company()
+	{
+		wageCalculator ("company1", 20, 20, 100);
+		wageCalculator ("company2", 10, 30, 110);
+		wageCalculator ("company3", 15, 10, 120);
+		wageCalculator ("company4", 30, 25, 130);
+		wageCalculator ("company5", 50, 15, 140);
+	}
+
 	//WAGE CALCULATOR
 	public static void wageCalculator(String company, int wage_per_hr, int working_days_per_month, int max_working_hrs)
 	{
@@ -58,11 +68,7 @@ public class EmployeeWageComputationProgram
 {
 	public static void main(String[] args)
 	{
-		//calling static method for different companies
-		WageCalculation.wageCalculator ("company1", 20, 20, 100);
-		WageCalculation.wageCalculator ("company2", 10, 30, 110);
-		WageCalculation.wageCalculator ("company3", 15, 10, 120);
-		WageCalculation.wageCalculator ("company4", 30, 25, 130);
-		WageCalculation.wageCalculator ("company5", 50, 15, 140);
+		//calling static method
+		WageCalculation.company();
 	}
 }
