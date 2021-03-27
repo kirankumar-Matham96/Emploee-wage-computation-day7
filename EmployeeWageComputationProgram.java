@@ -61,7 +61,7 @@ public class EmployeeWageComputationProgram
 {
 	public static void main(String[] args)
 	{
-		//object creation and invoking the WAGE CALCULATOR constructor
+		//object creation and calling instance method
 		WageCalculation wc = new WageCalculation();
 		wc.wageCalculator();
 	}
