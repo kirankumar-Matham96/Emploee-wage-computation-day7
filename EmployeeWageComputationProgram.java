@@ -28,11 +28,11 @@ public class EmployeeWageComputationProgram
 				case IS_PRESENT:
 					switch (checkEmpType)
 					{
-					case IS_FULL_TIME:
-						empWage = WAGE_PER_HR * FULL_TIME_WORKING_HRS;
-						break;
-					default:
-						empWage = WAGE_PER_HR * PART_TIME_WORKING_HRS;
+						case IS_FULL_TIME:
+							empWage = WAGE_PER_HR * FULL_TIME_WORKING_HRS;
+							break;
+						default:
+							empWage = WAGE_PER_HR * PART_TIME_WORKING_HRS;
 					}
 					break;
 				default:
