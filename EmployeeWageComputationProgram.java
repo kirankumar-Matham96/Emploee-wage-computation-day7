@@ -1,50 +1,67 @@
-//main class
-public class EmployeeWageComputationProgram
+class WageCalculation
 {
-	public static void main(String[] args)
-	{
-		//CONSTANTS
-		final int IS_PRESENT = 1;
-		final int IS_FULL_TIME = 1;
-		final int WAGE_PER_HR = 20;
-		final int FULL_TIME_WORKING_HRS = 8;
-		final int PART_TIME_WORKING_HRS = 4;
-		final int WORKING_DAYS_PER_MONTH = 20;
-		final int MAX_WORKING_HRS = 100;
+	//CONSTANTS
+	final int IS_PRESENT = 1;
+	final int IS_FULL_TIME = 1;
+	final int WAGE_PER_HR = 20;
+	final int WORKING_DAYS_PER_MONTH = 20;
+	final int MAX_WORKING_HRS = 100;
 
+	//WAGE CALCULATOR
+	public WageCalculation()
+	{
 		//VARIABLES
 		int checkPresence;
 		int checkEmpType;
-		int empWage = 0;
+		//int empDailyWage = 0; //Used if uncomment the commented code-lines
 		int dayOfMonth = 0;
 		int totalWage = 0;
 		int workingHrs = 0;
+		int totalWorkedHrs = 0;
 
-		while (dayOfMonth <= WORKING_DAYS_PER_MONTH && workingHrs <= MAX_WORKING_HRS)
+		//Wage calculation
+		while (dayOfMonth <= WORKING_DAYS_PER_MONTH && totalWorkedHrs <= MAX_WORKING_HRS)
 		{
-			checkPresence = (int) (Math.random()*10)%2;
-			checkEmpType = (int) (Math.random()*10)%2;
+			checkPresence = (int) (Math.random()*10)%2; //Presence check
+			checkEmpType = (int) (Math.random()*10)%2;  //Work Type check
 			dayOfMonth++;
 			switch (checkPresence)
 			{
 				case IS_PRESENT:
 					switch (checkEmpType)
 					{
-					case IS_FULL_TIME:
-						empWage = WAGE_PER_HR * FULL_TIME_WORKING_HRS;
-						workingHrs += FULL_TIME_WORKING_HRS;
-						break;
-					default:
-						empWage = WAGE_PER_HR * PART_TIME_WORKING_HRS;
-						workingHrs += PART_TIME_WORKING_HRS;
+						case IS_FULL_TIME:
+							workingHrs = 8;
+							totalWorkedHrs += workingHrs;
+							break;
+						default:
+							workingHrs = 4;
+							totalWorkedHrs += workingHrs;
 					}
 					break;
 				default:
-				empWage = 0;
-				workingHrs += 0;
+					totalWorkedHrs += 0;
 			}
-			totalWage += empWage;
+			/*//can show the daily wage
+			 * empDailyWage = WAGE_PER_HR * workingHrs;
+			 * System.out.println("Daily wage of employee: "+empDailyWage);
+			 */
+			totalWage = (WAGE_PER_HR * totalWorkedHrs);
+			/* //can show wage until the current day
+			 * if(dayOfMonth <= WORKING_DAYS_PER_MONTH)
+			 * System.out.println("till the day "+dayOfMonth+" : "+totalWage);
+			 */
 		}
-		System.out.println("Employee Wage: "+totalWage);
+		System.out.println("Employee Monthly Wage: "+totalWage);
+	}
+}
+
+//MAIN CLASS
+public class EmployeeWageComputationProgram
+{
+	public static void main(String[] args)
+	{
+		//object creation and invoking the WAGE CALCULATOR constructor
+		WageCalculation wc = new WageCalculation();
 	}
 }
