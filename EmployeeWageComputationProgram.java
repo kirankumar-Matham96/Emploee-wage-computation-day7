@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 class WageCalculation
 {
 	// CONSTANTS
@@ -19,28 +21,33 @@ class WageCalculation
 	}
 
 	//method to store company details
-	public static int[] company()	/* Made this method static so that when the method called, we don't need to pass parameters*/
+	/*
+	* Return type ArrayList<Integer> is only for running in the terminal.
+	* If the ArrayList is not specified with the TYPE, then it will give the error mesage: 'Unverified conversion'.
+	* Then we either recompile with '-Xlint:unchecked' command or specify everything properly.
+	*/
+	public static ArrayList<Integer> company()	/* Made this method static so that when the method called, we don't need to pass parameters*/
 	{
-		//company details sending to the constructor
+		ArrayList<Integer> totalWageofDiffEmp = new ArrayList<Integer>();
+
 		WageCalculation wc1 = new WageCalculation("company1", 20, 20, 100);
 		WageCalculation wc2 = new WageCalculation("company2", 10, 30, 110);
 		WageCalculation wc3 = new WageCalculation("company3", 15, 10, 120);
 		WageCalculation wc4 = new WageCalculation("company4", 30, 25, 130);
 		WageCalculation wc5 = new WageCalculation("company5", 50, 15, 140);
 
-		int[] totalWageofDiffEmp = new int[5];
-		totalWageofDiffEmp[0] = wc1.wageCalculator(); //storing the values returned
-		totalWageofDiffEmp[1] = wc2.wageCalculator();
-		totalWageofDiffEmp[2] = wc3.wageCalculator();
-		totalWageofDiffEmp[3] = wc4.wageCalculator();
-		totalWageofDiffEmp[4] = wc5.wageCalculator();
+		totalWageofDiffEmp.add(wc1.wageCalculator());
+		totalWageofDiffEmp.add(wc2.wageCalculator());
+		totalWageofDiffEmp.add(wc3.wageCalculator());
+		totalWageofDiffEmp.add(wc4.wageCalculator());
+		totalWageofDiffEmp.add(wc5.wageCalculator());
 
 		return totalWageofDiffEmp;
 	}
 
-
 	// WAGE CALCULATOR
-	public int wageCalculator() {
+	public int wageCalculator()
+	{
 		// VARIABLES
 		int checkPresence;
 		int checkEmpType;
@@ -71,13 +78,14 @@ class WageCalculation
 				totalWorkedHrs += 0;
 			}
 			/*
-			 * //can show the daily wage empDailyWage = wage_per_hr * workingHrs;
+			 * //can show the daily wage
+			 * empDailyWage = wage_per_hr * workingHrs;
 			 * System.out.println("Daily wage of employee: "+empDailyWage);
 			 */
 			totalWage = (wage_per_hr * totalWorkedHrs);
 			/*
-			 * //can show wage until the current day if(dayOfMonth <=
-			 * working_days_per_month)
+			 * //can show wage until the current day 
+			 * if(dayOfMonth <= working_days_per_month)
 			 * System.out.println("till the day "+dayOfMonth+" : "+totalWage);
 			 */
 		}
@@ -90,14 +98,14 @@ public class EmployeeWageComputationProgram
 {
 	public static void main(String[] args)
 	{
-		// calling instance methods and storing wages of employees in the array
-		int[] employeeWages = new int[5]; // declaring array
+		// calling instance methods and storing wages of employees in the array list
+		ArrayList<Integer> employeeWages = new ArrayList<Integer>(); // declaring array
 		employeeWages = WageCalculation.company();
 
-		// printing employee wages stored in the array
-		for(int i = 0; i < employeeWages.length; i++)
+		// printing employee wages stored in the array list
+		for(int i = 0; i < employeeWages.size(); i++)
 		{
-			System.out.println("Employee monthly wage of company_" + (i + 1) + ": " +employeeWages[i]);
+			System.out.println("Employee monthly wage of company_" + (i + 1) + ": " +employeeWages.get(i));
 		}
 	}
 }
