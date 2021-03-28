@@ -1,25 +1,20 @@
-//Used Array List
-import java.util.ArrayList;
-
 //interface
 interface EmployeeWage
 {
-	public void company(String company, int wage_per_hr, int working_days_per_month, int max_working_hrs);
+	public void company(int wage_per_hr, int working_days_per_month, int max_working_hrs);
 	public int wageCalculator(CompanyInfo cI);
 }
 
 class CompanyInfo
 {
 	// VARIABLES
-	public final String company;
 	public final int wage_per_hr;
 	public final int working_days_per_month;
 	public final int max_working_hrs;
 	public int totalWage = 0;
 
-	public CompanyInfo(String company, int wage_per_hr, int working_days_per_month, int max_working_hrs)
+	public CompanyInfo(int wage_per_hr, int working_days_per_month, int max_working_hrs)
 	{
-		this.company = company;
 		this.wage_per_hr = wage_per_hr;
 		this.working_days_per_month = working_days_per_month;
 		this.max_working_hrs = max_working_hrs;
@@ -43,7 +38,8 @@ public class EmployeeWageComputationProgram implements EmployeeWage
 	public final int IS_PRESENT = 1;
 	public final int IS_FULL_TIME = 1;
 
-	ArrayList<CompanyInfo> totalWageofDiffEmp = new ArrayList<CompanyInfo>();;
+	//array diclaration
+	CompanyInfo[] totalWageofDiffEmp = new CompanyInfo[1];
 
 	//Object for Company Info method
 	CompanyInfo wcc;
@@ -52,19 +48,19 @@ public class EmployeeWageComputationProgram implements EmployeeWage
 		/*
 		* Made this method static so that when the method called, we don't need to pass parameters
 		*/
-		public void company(String company, int wage_per_hr, int working_days_per_month, int max_working_hrs)
+		public void company(int wage_per_hr, int working_days_per_month, int max_working_hrs)
 		{
-			//Adding details to the array list (array list of type 'CompanyInfo')
-			wcc = new CompanyInfo(company, wage_per_hr, working_days_per_month, max_working_hrs);
+			//Adding details to the array list (array of type 'CompanyInfo')
+			wcc = new CompanyInfo(wage_per_hr,working_days_per_month,max_working_hrs);
 
-			totalWageofDiffEmp.add(wcc);
+			totalWageofDiffEmp[0] = wcc;
 
 			CompanyInfo cI;
 
 			//calling calculator method for every company
-			for(int i=0;i<totalWageofDiffEmp.size();i++)
+			for(int i=0;i<totalWageofDiffEmp.length;i++)
 			{
-				cI = totalWageofDiffEmp.get(0);
+				cI = totalWageofDiffEmp[0];
 
 				int totalWage = wageCalculator(cI);
 				wcc.setTotalWage(totalWage);
@@ -126,13 +122,8 @@ public class EmployeeWageComputationProgram implements EmployeeWage
 	{
 		EmployeeWage company1 = new EmployeeWageComputationProgram();
 		EmployeeWage company2 = new EmployeeWageComputationProgram();
-		EmployeeWage company3 = new EmployeeWageComputationProgram();
-		EmployeeWage company4 = new EmployeeWageComputationProgram();
 
-		company1.company("company1",20, 20, 100);
-		company2.company("company2",25, 15, 150);
-		company3.company("company3", 20, 20, 100);
-		company4.company("company4", 25, 15, 150);
+		company1.company(20, 20, 100);
+		company2.company(25, 15, 150);
 	}
 }
-
